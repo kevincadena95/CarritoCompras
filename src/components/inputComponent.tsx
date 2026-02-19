@@ -1,0 +1,21 @@
+import React from 'react'
+import { KeyboardTypeOptions, TextInput } from 'react-native'
+import { StyleGlobal } from '../theme/appTheme';
+
+  interface Props{
+    placeholder: string;
+    keyboardType: KeyboardTypeOptions;
+    handleChangeValue: (name: string, value: string) => void; 
+    name: string;
+}
+
+export const InputComponent = ({placeholder, keyboardType, handleChangeValue, name}: Props) => {
+
+  return (
+    <TextInput
+    placeholder= {placeholder}
+    keyboardType= {keyboardType} 
+    onChangeText= {(value)=>handleChangeValue(name, value)}
+    style={StyleGlobal.input}/>
+  )
+}
