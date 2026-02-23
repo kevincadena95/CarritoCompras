@@ -20,7 +20,15 @@ export const LoginScreen = () => {
 
     //funcion para capturar los valores de mi formulario
     const handleChangeValue = (name: string, value: string) => {
-    console.log(name, " ", value);
+    //console.log(name, " ", value);
+    setFormLogin({...formLogin, [name]: value }); 
+    //... es el oprador de funcion, saca copias de un objeto
+    //En react native nunca cambiar directamente de un objeto, si o sacar una copia del objeto pra cambiar su estado
+    }
+
+    //funcios para iniciar sesion
+    const handleSingIn=(): void =>{
+        console.log(formLogin)
     }
 
     return (
@@ -35,9 +43,12 @@ export const LoginScreen = () => {
                 name='email'/>
                 <InputComponent placeholder='Contraseña' keyboardType='default'
                 handleChangeValue={handleChangeValue}
-                name='password'/>
+                name='password'
+                isPassword = {true} //propiedad opcional
+                />
+                
                 </View>
-            <ButtonComponent buttonText='Iniciar'/>
+            <ButtonComponent buttonText='Iniciar' onPress={handleSingIn}/>
         </BodyComponent>
         
     </View>

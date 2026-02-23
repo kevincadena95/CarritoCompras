@@ -32,7 +32,7 @@ export const StyleGlobal = StyleSheet.create({
 
     button:{
         backgroundColor: TERTIARY_COLOR,
-        borderRadius: 5,
+        borderRadius: 15,
         marginVertical: 5
     },
 
