@@ -52,10 +52,11 @@ export const StyleGlobal = StyleSheet.create({
         
     },
 
-    textRedirect:{
+    textRedirect: {
         marginTop: 20,
-        fontSize: 16,
+        fontSize: 15,
         color: PRIMARY_COLOR,
-        
+        fontWeight: 'bold',
+        textAlign: 'center'
     }
 })

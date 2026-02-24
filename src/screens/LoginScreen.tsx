@@ -88,21 +88,24 @@ export const LoginScreen = () => {
                 <InputComponent placeholder='Contraseña' keyboardType='default'
                 handleChangeValue={handleChangeValue}
                 name='password'
-                isPassword = {true} //propiedad opcional  
+                isPassword = {hiddenPassword} 
                 />
                 <Icon name={hiddenPassword ? 'visibility' : 'visibility-off'}
                 color={PRIMARY_COLOR}
                 style={StyleGlobal.IconPassword}
+                size={20}
                 onPress={()=> setHiddenPassword(!hiddenPassword)}
                 />  
                 </View>
 
             <ButtonComponent buttonText='Iniciar' onPress={handleSingIn}/>
             
-            <TouchableOpacity onPress={()=>navigation.dispatch(CommonActions.navigate({name:'Registro'}))}>
-                <Text style={StyleGlobal.textRedirect}>No tienes una cuenta? Registrate ahora</Text>
-            </TouchableOpacity>
-
+        <TouchableOpacity
+            onPress={() => navigation.dispatch(CommonActions.navigate({ name: 'Register' }))}>
+            <Text style={StyleGlobal.textRedirect}>
+                No tienes una cuenta? Regístrate ahora
+            </Text>
+        </TouchableOpacity>
         </BodyComponent>
         
     </View>
