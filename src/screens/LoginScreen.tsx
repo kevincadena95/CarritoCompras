@@ -65,8 +65,10 @@ export const LoginScreen = ({users}:Props) => {
         Alert.alert('Error','Usuario y/o Contraseña Incorrectos');
         return;
     }
+        //console.log(formLogin)
 
-        console.log(formLogin)
+        //Si todo sale bien, se carga la lista de productos
+        navigation.dispatch(CommonActions.navigate({ name: 'Home'}))
     }
 
 
