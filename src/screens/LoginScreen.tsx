@@ -57,6 +57,7 @@ export const LoginScreen = () => {
 
     //funcios para iniciar sesion
     const handleSingIn=(): void =>{
+        
     if (formLogin.email == '' || formLogin.password == ''){
         //mensaje de alerta
         Alert.alert('Error','Campos Incompletos');

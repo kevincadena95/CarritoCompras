@@ -18,7 +18,7 @@ export const StackNavigator =() => {
         }}>
             
         <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Registro" component={RegisterScreen} />
+        <Stack.Screen name="Register" component={RegisterScreen} />
     </Stack.Navigator>
     );
 }
