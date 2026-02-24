@@ -8,28 +8,23 @@ import { ButtonComponent } from '../components/ButtonComponent';
 import { PRIMARY_COLOR } from '../commons/constants'
 import Icon from '@expo/vector-icons/MaterialIcons';
 import { CommonActions, useNavigation } from '@react-navigation/native';
+import { User } from '../Navigator/StackNavigator';
 
+// Interfaz define la estructura del objeto del formulario
 interface FormLogin {
     email: string;
     password: string
 }
 
-interface User {
-    id: number;
-    name: string;
-    email: string;
-    password: string
+//Interfaz que defie las propiedades de un componente
+
+interface Props{
+    users:User[];
 }
 
-export const LoginScreen = () => {
+export const LoginScreen = ({users}:Props) => {
     //hook use navigation
     const navigation=useNavigation();
-
-    //datos de prueba
-    const users: User[]=[
-        {id: 1, name: 'Kevin Cadena', email: 'kevgeek5@gmail.com', password: '12345'},
-        {id: 2, name: 'Mika Cadena', email: 'mikaela@gmail.com', password: '54321'}
-    ]
 
     //funcion para verificar el usuario
     const verifyUser =(): User =>{
@@ -57,7 +52,7 @@ export const LoginScreen = () => {
 
     //funcios para iniciar sesion
     const handleSingIn=(): void =>{
-        
+
     if (formLogin.email == '' || formLogin.password == ''){
         //mensaje de alerta
         Alert.alert('Error','Campos Incompletos');

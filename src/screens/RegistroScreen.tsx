@@ -6,6 +6,7 @@ import { StyleGlobal } from '../theme/appTheme';
 import { InputComponent } from '../components/inputComponent';
 import { ButtonComponent } from '../components/ButtonComponent';
 import { CommonActions, useNavigation } from '@react-navigation/native';
+import { User } from '../Navigator/StackNavigator';
 
 interface FormerRegister {
     name: string;
@@ -13,7 +14,14 @@ interface FormerRegister {
     password: string
 }
 
-export const RegisterScreen = () => {
+//Interfaz que defie las propiedades de un componente
+
+interface Props{
+    listUsers:User[];
+    handleAddUser: (user: User) => void; //actualizar el arreglo
+}
+
+export const RegisterScreen = ({listUsers, handleAddUser}:Props) => {
     //hook use navigation
     const navigation=useNavigation();
 
@@ -30,9 +38,47 @@ export const RegisterScreen = () => {
         setFormRegister({...formRegister, [name]: value});
     }
 
+    //funcion para verificar si existe el usuario
+    const verifyUser = (): User => {
+        const existUser =listUsers.filter(user => user.email == formRegister.email)[0];
+        return existUser
+    }
+
+    //funcion para generar los ids de los nuevos usuarios
+    const getTdUser = () =>{
+        const getId = listUsers.length + 1;
+        return getId;
+    }
+
     //funcion para registrarse
     const handleRegister = () => {
-        console.log(formRegister)
+    //Validar los campos
+    if(formRegister.name=='' || formRegister.email=='' || formRegister.password==''){
+        Alert.alert("Error","Por favor complete todos los campos")
+            return;
+    }
+
+    //Validar campo de inicio de sesion
+    if(verifyUser()){
+        Alert.alert("Error","El usuario ya se encuentra registrado")
+        return;
+    }
+    //Registrar usuarios
+        //Crear objeto user
+        const newUser: User ={
+            id: getTdUser(),
+            name: formRegister.name,
+            email: formRegister.email,
+            password: formRegister.password
+        }
+
+        //agregar objeto al arreglo
+        handleAddUser(newUser);
+        Alert.alert("Registrado","Usuario registrado con éxito")
+        //redireccionar al login
+        navigation.goBack();
+        
+        //console.log(formRegister)
     }
 
     return (
