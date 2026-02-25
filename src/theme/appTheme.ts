@@ -14,6 +14,8 @@ export const StyleGlobal = StyleSheet.create({
         backgroundColor: SECONDARY_COLOR,
         borderRadius: 10,
         paddingHorizontal: 30,
+        paddingVertical: 30,
+        paddingBottom: 30,
         
     },
 
@@ -33,7 +35,8 @@ export const StyleGlobal = StyleSheet.create({
     button:{
         backgroundColor: TERTIARY_COLOR,
         borderRadius: 15,
-        marginVertical: 5
+        marginVertical: 5,
+        padding: 15
     },
 
     buttonText:{
@@ -58,5 +61,105 @@ export const StyleGlobal = StyleSheet.create({
         color: PRIMARY_COLOR,
         fontWeight: 'bold',
         textAlign: 'center'
-    }
+    },
+
+    ContainerCard: {
+        width: 160,
+        height: 220, 
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 10,
+        borderWidth: 1,
+        borderColor: TERTIARY_COLOR,
+        marginBottom: 10,
+        borderRadius: 10,
+        
+        
+    },
+
+    titleCard: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        //textAlign: 'center'
+    },
+
+    
+
+    imageCard: {
+        width: 80,
+        height: 80,       
+    },
+
+    iconCard: {
+        flex: 1,
+        alignItems: 'flex-end',
+        
+    },
+
+    containerModal: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0,0,0,0.5)',
+    },
+    
+    bodyModal: {
+        padding: 20, 
+        backgroundColor: SECONDARY_COLOR,
+        borderRadius: 10
+    },
+
+    HeatherModal: {
+        flexDirection: 'row', 
+        borderColor: TERTIARY_COLOR,
+        borderBottomWidth: 1,
+        padding: 10
+    },
+
+    titleModal: {
+        fontWeight: 'bold',
+        fontSize: 20,
+    },
+
+    imageModal:{
+        width: 200,
+        height: 200
+    },
+
+    containerQuantity: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    buttonQuantity:{
+        backgroundColor: TERTIARY_COLOR,
+        height: 50,
+        width: 50,
+        borderRadius: 15,
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 25
+    },
+
+    buttonQuantitytext:{
+        backgroundColor: SECONDARY_COLOR,
+        fontSize: 20,
+        fontWeight: 'bold'
+    },
+
+    textTotalPrice: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginBottom: 10
+    },
+
+    textStock: {
+        fontSize: 18,
+        color: 'red',
+        fontWeight: 'bold',
+        margin: 20,
+        textAlign: 'center'
+    },
+
 })
