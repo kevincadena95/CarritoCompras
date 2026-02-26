@@ -8,11 +8,11 @@ import { ModalProductComponent } from './ModalProductComponent';
 
 interface Props {
     item: Product;
-
+    changeStockProduct: (id: number, quantity: number) => void;
 }
 
 
-export const CardProductComponent = ({item}: Props) => {
+export const CardProductComponent = ({item, changeStockProduct}: Props) => {
     //hook usestate: gestionar el estado del modal
     const [showModal, setShowModal] = useState<boolean>(false);
 
@@ -39,7 +39,7 @@ export const CardProductComponent = ({item}: Props) => {
                 />  
             </View>          
             </View>
-        <ModalProductComponent isVisible={showModal} item={item} hiddenModal={hiddenModal}/>
+        <ModalProductComponent isVisible={showModal} item={item} hiddenModal={hiddenModal} changeStockProduct={changeStockProduct}/>
         </> 
     )
 }

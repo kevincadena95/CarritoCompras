@@ -162,4 +162,16 @@ export const StyleGlobal = StyleSheet.create({
         textAlign: 'center'
     },
 
+    heatherHome: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+
+    iconHome: {
+        flex: 1,
+        alignItems: 'flex-end',
+        paddingTop: 30,
+        paddingHorizontal: 30
+    }
+
 })

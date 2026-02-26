@@ -11,15 +11,25 @@ interface Props{
     isVisible: boolean; //mostrar modal
     item: Product;
     hiddenModal: () => void; //se encargra de ocultar el modal pero va a atrabajar con el estado
+    changeStockProduct: (id: number, quantity: number) => void; //funcion actuliza el stock
 }
 
-export const ModalProductComponent = ({isVisible, item, hiddenModal}: Props) => {
+export const ModalProductComponent = ({isVisible, item, hiddenModal, changeStockProduct}: Props) => {
 
     const{width} = useWindowDimensions();
 
     //hook useState: permite manejar el estado del contador
-    const [contador, setContador] = useState <number>(1);
-
+    const [quantity, setQuantity] = useState <number>(1);
+    
+    //llamar a la funcion que acyualice el stock
+    const handleAddProducts=()=>{
+        //llamar a la función que actilice el stock
+        changeStockProduct(item.id, quantity);
+        //cerrar modal
+        hiddenModal();
+        //reiniciar la cantidad
+        setQuantity(1);
+    }
 
 
     return (
@@ -48,17 +58,18 @@ export const ModalProductComponent = ({isVisible, item, hiddenModal}: Props) => 
                 <>
                 <View style={StyleGlobal.containerQuantity}>
                     <TouchableOpacity style={StyleGlobal.buttonQuantity}
-                    onPress={()=> setContador(contador+1)}>
-                        <Text style={StyleGlobal.buttonText}>+</Text>
+                    onPress={()=> setQuantity(quantity+1)}
+                    disabled={quantity == item.stock}>
+                        <Text style={StyleGlobal.buttonText}> + </Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity><Text>{contador}</Text></TouchableOpacity>
+                    <TouchableOpacity><Text>{quantity}</Text></TouchableOpacity>
 
                     <TouchableOpacity style={StyleGlobal.buttonQuantity}
-                    onPress={()=> setContador(contador-1)}
-                    disabled={contador == 1}> 
+                    onPress={()=> setQuantity(quantity-1)}
+                    disabled={quantity == 1}> 
                     {/* //disable para desabilitar el boton cuando la cantidad llegue a 1 */}
-                        <Text style={StyleGlobal.buttonText}>-</Text>
+                        <Text style={StyleGlobal.buttonText}> - </Text>
                     </TouchableOpacity>
                     
                     
@@ -66,9 +77,10 @@ export const ModalProductComponent = ({isVisible, item, hiddenModal}: Props) => 
 
                 <View>
                     <View style={{alignItems: 'center'}}>
-                        <Text style={StyleGlobal.textTotalPrice}>Total: $ {(item.price*contador).toFixed(2)} </Text>
+                        <Text style={StyleGlobal.textTotalPrice}>Total: $ {(item.price*quantity).toFixed(2)} </Text>
                     </View>
-                    <TouchableOpacity style={StyleGlobal.button}>
+                    <TouchableOpacity style={StyleGlobal.button}
+                    onPress={handleAddProducts}>
                         <Text style={StyleGlobal.buttonText}>Agregar al carrito</Text>
                     </TouchableOpacity>
                 </View>
